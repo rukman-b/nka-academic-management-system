@@ -11,10 +11,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $namedUsers = [
-            ['name' => 'System Admin', 'email' => 'sysadmin@gmail.com', 'role' => Roles::SYSTEM_ADMIN],
-            ['name' => 'Super Admin',  'email' => 'superadmin@gmail.com', 'role' => Roles::SUPER_ADMIN],
-            ['name' => 'Admin',        'email' => 'admin@gmail.com',      'role' => Roles::ADMIN],
-            ['name' => 'Test User',    'email' => 'test@example.com',     'role' => null],
+            ['name' => 'System Admin', 'email' => 'sysadmin@example.com', 'role' => Roles::SYSTEM_ADMIN],
+            ['name' => 'Super Admin',  'email' => 'superadmin@example.com', 'role' => Roles::SUPER_ADMIN],
+            ['name' => 'Admin',        'email' => 'admin@example.com',      'role' => Roles::ADMIN],
         ];
 
         foreach ($namedUsers as $userData) {
@@ -27,7 +26,5 @@ class UserSeeder extends Seeder
             }
         }
 
-        // Optional: create 10 random users
-        User::factory(10)->create();
     }
 }

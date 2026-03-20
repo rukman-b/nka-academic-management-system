@@ -15,7 +15,6 @@ class StakeholderSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             StudentSeeder::class,
-            // LecturerSeeder::class,
             EmployerSeeder::class,
         ]);
     }

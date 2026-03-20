@@ -17,13 +17,11 @@ class StudentSeeder extends Seeder
     {
         Student::create([
             'name' => 'student',
-            'email' => 'student@gmail.com',
+            'email' => 'student@example.com',
             'password' => Hash::make('password'), 
             'phone' => '0712345678',
             'dob' => '2000-01-01',
         ]);
 
-        // Create 20 dummy students using factory
-        Student::factory()->count(20)->create();
     }
 }

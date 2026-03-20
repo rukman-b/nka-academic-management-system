@@ -1,28 +1,20 @@
 <?php
 
 namespace Database\Seeders;
-use Illuminate\Database\Seeder;
 
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-
     public function run(): void
     {
+        // Automatically seed the default dataset during tests.
+        if (app()->environment('testing')) {
+            $this->call($this->defaultSeeders());
 
+            return;
+        }
 
-        // Automatically run 'all' group in testing environment
-    if (app()->environment('testing')) 
-    {
-        $this->call([
-            SpatieSeeder::class,
-            StakeholderSeeder::class,
-        ]);
-        return;
-    }
-
-
-    
         $options = [
             'spatie' => 'SpatieSeeder (Roles & Permissions)',
             'stakeholder' => 'StakeholderSeeder (Users & Students)',
@@ -39,12 +31,19 @@ class DatabaseSeeder extends Seeder
         match ($choice) {
             'spatie' => $this->call([SpatieSeeder::class]),
             'stakeholder' => $this->call([StakeholderSeeder::class]),
-            'all' => $this->call([
-                SpatieSeeder::class,
-                StakeholderSeeder::class,
-            ]),
+            'all' => $this->call($this->defaultSeeders()),
             default => $this->command->info('No seeders were run.'),
         };
     }
 
+    /**
+     * Seeders included in the default/demo dataset.
+     */
+    private function defaultSeeders(): array
+    {
+        return [
+            SpatieSeeder::class,
+            StakeholderSeeder::class,
+        ];
+    }
 }
