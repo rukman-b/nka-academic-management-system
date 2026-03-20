@@ -1,0 +1,51 @@
+/**
+ * <x-action-button> Blade Component
+ * ---------------------------------------------------------------------------
+ * A reusable and flexible AdminLTE 3 action button for Livewire 3 applications.
+ * Designed to support both direct and parent method calls with optional SweetAlert2 v8 confirmation.
+ *
+ * Key Features:
+ * - Alpine.js + Livewire 3 integration
+ * - Optional SweetAlert2 v8 confirmation (`result.value`)
+ * - Loading spinner and button disabling on click
+ * - Tooltip on hover
+ * - FontAwesome icon support
+ * - Bootstrap 4 `btn-sm` style
+ *
+ * Supported Props:
+ * ---------------------------------------------------------------------------
+ * @param string   $method          | Required: Livewire method name to call (supports "$parent.method")
+ * @param mixed    $params          | Optional: Single value or array of arguments to pass to method
+ * @param string   $label           | Optional: Button label (auto-inferred from buttonType if omitted)
+ * @param bool     $confirm         | Optional: Show SweetAlert2 confirmation? (default: false or true if delete)
+ * @param string   $confirmMessage  | Optional: Custom message inside SweetAlert2 confirmation
+ * @param string   $tooltip         | Optional: Tooltip shown on hover
+ * @param string   $icon            | Optional: FontAwesome icon (auto-inferred from buttonType if omitted)
+ * @param string   $variant         | Optional: Bootstrap color class (auto-inferred from buttonType if omitted)
+ * @param string   $swalType        | Optional: SweetAlert2 icon type: 'warning', 'info', etc.
+ * @param string   $buttonType      | Optional: One of ['edit', 'delete', 'create', 'update', 'cancel']
+ *
+ * Notes:
+ * - Setting buttonType (e.g., "delete") will auto-fill icon, variant, label, and swalType unless overridden.
+ * - Supports both Livewire `$this->method()` and `$parent.method()` via `method="edit"` or `method="$parent.edit"`
+ * - Uses `x-data` to disable button and show spinner while processing.
+ *
+ * Example 1 (Call method directly in same component):
+ * ---------------------------------------------------------------------------
+ * <x-action-button
+ *     method="edit"
+ *     :params="[$student->id]"
+ *     buttonType="edit"
+ *     tooltip="Edit this student"
+ * />
+ *
+ * Example 2 (Dispatch to parent Livewire component):
+ * ---------------------------------------------------------------------------
+ * <x-action-button
+ *     method="$parent.delete"
+ *     :params="[$student->id]"
+ *     buttonType="delete"
+ *     confirmMessage="Do you really want to remove this student?"
+ *     tooltip="Delete permanently"
+ * />
+ */

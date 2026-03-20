@@ -1,0 +1,76 @@
+/**
+ * <x-action-button-group /> — Dynamic Livewire Action Button Group
+ * ==================================================================================
+ * A flexible and reusable wrapper component for rendering multiple <x-action-button />
+ * instances as a group with consistent styling and spacing. Supports dynamic button
+ * config arrays with full integration into Livewire, Alpine.js, and SweetAlert2.
+ *
+ * 🧩 Key Features:
+ * ----------------------------------------------------------------------------------
+ * - Automatically renders multiple <x-action-button />s using Blade::render()
+ * - Button configuration passed via PHP array
+ * - Supports vertical (mobile) and horizontal (desktop) layout using Bootstrap 4
+ * - Each button supports all features of <x-action-button> (method calls, dispatch, tooltips, icons, etc.)
+ * - Separation of button logic and presentation for cleaner view code
+ *
+ * 🎛 Configurable Props:
+ * ----------------------------------------------------------------------------------
+ * @property array $buttons | Required: Array of associative arrays (each defining one action button)
+ *
+ * Each button array can include the following keys (passed to <x-action-button>):
+ * - method: string           | Required – Livewire method name (e.g., "edit", "$parent.delete")
+ * - params: mixed            | Optional – Parameters to pass to the method (array or value)
+ * - label: string            | Optional – Button label (default inferred from buttonType)
+ * - buttonType: string       | Optional – One of ['edit', 'delete', 'create', 'update', 'cancel']
+ * - confirm: bool            | Optional – Enable SweetAlert2 confirmation (true/false)
+ * - confirmMessage: string   | Optional – Custom confirmation message
+ * - tooltip: string          | Optional – Tooltip shown on hover
+ * - icon: string             | Optional – FontAwesome icon class (overrides buttonType default)
+ * - variant: string          | Optional – Bootstrap variant class (e.g., 'danger', 'info')
+ * - swalType: string         | Optional – SweetAlert2 icon type ('warning', 'info', etc.)
+ *
+ * 🧪 Example Usage in a Blade View:
+ * ----------------------------------------------------------------------------------
+ * <x-action-button-group :buttons="[
+ *     [
+ *         'method' => '$parent.edit',
+ *         'params' => [$row->id],
+ *         'buttonType' => 'edit',
+ *         'tooltip' => 'Edit record'
+ *     ],
+ *     [
+ *         'method' => '$parent.delete',
+ *         'params' => [$row->id],
+ *         'buttonType' => 'delete',
+ *         'confirmMessage' => 'Are you sure you want to remove this record?',
+ *         'tooltip' => 'Delete permanently'
+ *     ]
+ * ]" />
+ *
+ * 📦 Required Helper Function:
+ * ----------------------------------------------------------------------------------
+ * The component uses a global helper called `render_blade_attributes()` to safely convert
+ * the button config array into Blade attribute syntax. This supports dynamic Livewire syntax (e.g. :params).
+ *
+ * Example of the helper:
+ * ----------------------------------------------------------------------------------
+ * function render_blade_attributes(array $attributes): string
+ * {
+ *     return collect($attributes)->map(function ($value, $key) {
+ *         $isDynamic = is_array($value) || is_bool($value) || is_numeric($value);
+ *
+ *         $bladeKey = $isDynamic ? ':' . $key : $key;
+ *         $bladeValue = $isDynamic
+ *             ? (is_array($value) ? json_encode($value) : ($value ? 'true' : 'false'))
+ *             : e($value);
+ *
+ *         return $bladeKey . '="' . $bladeValue . '"';
+ *     })->implode(' ');
+ * }
+ *
+ * 📐 Layout:
+ * ----------------------------------------------------------------------------------
+ * - Buttons are displayed in a vertical column on mobile and a horizontal row on desktop
+ * - Uses Bootstrap spacing: `.d-flex.flex-column.flex-md-row .mr-2 .mt-2`
+ * - Each button is wrapped in a `<div>` for layout isolation
+ */

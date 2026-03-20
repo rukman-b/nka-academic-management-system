@@ -1,0 +1,49 @@
+/**
+ * <x-export-button /> — Reusable Export Button Component
+ * ==================================================================================
+ * A simple and flexible Blade component to trigger data export via a GET form.
+ * Designed to work seamlessly with Laravel export routes (e.g., using Laravel Excel).
+ *
+ * 🧩 Key Features:
+ * ----------------------------------------------------------------------------------
+ * - Supports multiple export formats (CSV, XLSX)
+ * - Automatically submits a GET request with selected format and filename
+ * - Bootstrap 4 compatible (`btn-success`, `btn-sm`)
+ * - Optional tooltip on hover
+ * - Easily composable inside tables, modals, or toolbars
+ *
+ * 🎛 Configurable Props:
+ * ----------------------------------------------------------------------------------
+ * @property string  $route     | Required – Named route to submit the export request (e.g., 'admin.export.students')
+ * @property string  $label     | Optional – Button text (default: 'Export')
+ * @property string  $filename  | Optional – Filename passed as a query param (default: 'export')
+ * @property string  $tooltip   | Optional – Tooltip text shown on hover (uses `title` attribute)
+ *
+ * 🧪 Example Usage:
+ * ----------------------------------------------------------------------------------
+ * <x-export-button
+ *     route="admin.export.students"
+ *     label="Download Students"
+ *     filename="student_export_data"
+ *     tooltip="Download in CSV or Excel format"
+ * />
+ *
+ * ⛳ How It Works:
+ * ----------------------------------------------------------------------------------
+ * - Renders a small inline GET form
+ * - Sends two query parameters: `format` (csv|xlsx) and `filename`
+ * - Your export controller can receive these via `request()->input('format')`
+ *
+ * 📝 Example Route Controller:
+ * ----------------------------------------------------------------------------------
+ * Route::get('/admin/export/students', function () {
+ *     $format = request('format', 'xlsx');
+ *     $filename = request('filename', 'export');
+ *     return Excel::download(new StudentsExport, "$filename.$format");
+ * })->name('admin.export.students');
+ *
+ * 📐 Layout:
+ * ----------------------------------------------------------------------------------
+ * - Includes a format selector (`<select>`) and a styled submit button
+ * - Wrapped inside a `form-inline` class for compact display
+ */

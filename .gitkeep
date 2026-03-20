@@ -1,0 +1,4 @@
+/storage/*
+!/storage/.gitkeep
+/public/storage/*
+!/public/storage/.gitkeep

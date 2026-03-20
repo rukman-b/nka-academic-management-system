@@ -1,0 +1,128 @@
+// resources/sass/layouts/_glass-student.scss
+
+// 1. Variables & tokens
+$glass-bg-opacity:    0.05 !default;
+$glass-border-color:  rgba(255,255,255,0.2) !default;
+$glass-blur:          12px !default;
+$glass-radius:        10px !default;
+$glass-shadow:        0 8px 32px rgba(31,38,135,0.25) !default;
+$glass-text-color:    #ffffff !default;
+$glass-accent:        #aad4ff !default;
+
+
+// 2. Mixin for glass container
+@mixin glass-container($opacity: $glass-bg-opacity) {
+  background: rgba(255,255,255,$opacity);
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  border: 1px solid $glass-border-color;
+  border-radius: $glass-radius;
+  box-shadow: $glass-shadow;
+  color: $glass-text-color;
+}
+
+// 3. Base theme wrapper
+.glassmorphism-theme {
+  // global background
+  background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: $glass-text-color;
+
+  // typography & links
+  h1,h2,h3,h4,h5,h6, p, label, span, small {
+    color: $glass-text-color !important;
+  }
+  a {
+    color: $glass-accent !important;
+    &:hover { text-decoration: underline; }
+  }
+
+  // Major layout panels
+  .card,
+  .main-header,
+  .main-footer,
+  .content-wrapper,
+  .login-box,
+  .register-box {
+    @include glass-container();
+    background-color: rgba(255,255,255, 0.08); // slightly stronger
+  }
+
+  // navbar‐user dropdown
+  .dropdown-menu {
+    @include glass-container(0.15);
+    // border-radius: $glass-radius;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+
+    .user-header {
+      @include glass-container(0.05);
+      background: transparent !important;
+      margin: 0; padding: 1rem;
+      text-align: center;
+      img { border: 2px solid $glass-border-color; }
+    }
+
+    .user-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem;
+      background: transparent !important;
+
+      a {
+        @include glass-container(0.08);
+        padding: 0.5rem 1rem;
+        text-align: center;
+        flex: 1;
+        margin: 0 0.25rem;
+        transition: background .3s ease, color .3s ease;
+
+        &:hover {
+          background: rgba(255,255,255, 0.25);
+          color: $glass-accent;
+        }
+      }
+    }
+  }
+
+  // Forms & inputs
+  .form-control,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    @include glass-container(0.08);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+    &::placeholder { color: rgba(255,255,255,0.6); }
+    &:focus {
+      background: rgba(255,255,255,0.12);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+    }
+  }
+
+  // Buttons
+  .btn{
+    @include glass-container(0.08);
+    border-radius: 8px;
+    transition: background .3s ease;
+
+    &, &:hover {
+      color: $glass-text-color !important;
+      text-decoration: none !important;
+    }
+
+    &:hover {
+      background: rgba(255,255,255,0.2) !important;
+    }
+  }
+
+  .widget-user-header, .card-header{
+    background: transparent !important;
+  }
+}

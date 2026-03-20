@@ -1,0 +1,72 @@
+/**
+ * <livewire:components.tables.data-table /> — Reusable DataTable Component
+ * ==================================================================================
+ * A fully reusable, configurable Livewire 3 + AdminLTE 3 DataTable component
+ * with support for pagination, search, sort, export, tooltips, and action buttons.
+ *
+ *  Key Features:
+ * ----------------------------------------------------------------------------------
+ * - Livewire 3 + Bootstrap 4 compatible
+ * - Dynamic column configuration and eager-loading of nested relations
+ * - Optional search, sort, pagination, and export toggle
+ * - Supports custom column labels via `columnLabels`
+ * - Nested columns (e.g., 'programme.name') handled automatically via data_get()
+ * - Action column using a Blade partial (e.g., for <x-action-button> group)
+ *
+ * 🎛 Configurable Public Properties (via Blade):
+ * ----------------------------------------------------------------------------------
+ * @property string   $model            | Required: Fully qualified model class name
+ * @property array    $columns          | Required: List of DB fields or nested relations (e.g., ['name', 'programme.name'])
+ * @property bool     $enableSearch     | Optional: Enables search box and column selector (default: false)
+ * @property string   $searchColumn     | Optional: DB column to filter on (default: 'name')
+ * @property bool     $enableSort       | Optional: Enables sorting on non-nested columns (default: true)
+ * @property string   $sortColumn       | Optional: Default column to sort by (default: 'id')
+ * @property string   $sortDirection    | Optional: 'asc' or 'desc' (default: 'asc')
+ * @property bool     $enablePagination | Optional: Enable pagination (default: true)
+ * @property int      $perPage          | Optional: Number of rows per page (default: 10)
+ * @property bool     $enableExport     | Optional: Enables external export button (default: true)
+ * @property bool     $showActions      | Optional: Adds 'Actions' column (default: false)
+ * @property string   $actionView       | Optional: View path to Blade partial for action buttons (required if showActions = true)
+ * @property array    $columnLabels     | Optional: Custom labels (e.g., ['programme.name' => 'Programme'])
+ *
+ * 🛠 Runtime Behavior:
+ * ----------------------------------------------------------------------------------
+ * - Automatically eager-loads all nested relationships used in $columns (e.g., ['batches.0.name'])
+ * - Search filters only work on flat (non-nested) columns
+ * - Sorting is only enabled for flat (non-nested) columns
+ * - Uses Livewire pagination with `bootstrap` theme
+ * - Dynamic tooltips, SweetAlert2 integration, and export handled externally
+ *
+ *  Example Usage (inside any Blade View):
+ * ----------------------------------------------------------------------------------
+ * <livewire:components.tables.data-table
+ *     :model="\App\Models\Student::class"
+ *     :columns="['id', 'name', 'email', 'programme.name', 'batches.0.name']"
+ *     :column-labels="[
+ *         'name' => 'Full Name',
+ *         'programme.name' => 'Programme',
+ *         'batches.0.name' => 'Batch',
+ *     ]"
+ *     :enable-search="true"
+ *     :enable-sort="true"
+ *     :enable-pagination="true"
+ *     :enable-export="true"
+ *     search-column="name"
+ *     :show-actions="true"
+ *     action-view="'livewire.admin.students.partials.actions'"
+ * />
+ *
+ *  Action View Example (Blade partial):
+ * ----------------------------------------------------------------------------------
+ * <x-action-button
+ *     method="$parent.edit"
+ *     :params="[$row->id]"
+ *     button-type="edit"
+ *     tooltip="Edit this record"
+ * />
+ *
+ *  Best Practices:
+ * - Use only dot-notation for Eloquent relations (e.g., programme.name, not programme()->name)
+ * - Avoid sorting/searching on deeply nested keys (e.g., batches.0.name)
+ * - Always validate that the action view exists when `showActions = true`
+ */

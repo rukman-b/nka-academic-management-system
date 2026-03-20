@@ -1,0 +1,92 @@
+   
+   //Using the database engine
+   public function filterAwards()
+    {
+        // Step 1: Get already assigned award IDs for this student
+        $alreadyAssigned = StudentExitAward::where('student_id', $this->student_id)
+            ->pluck('programme_exit_award_id');
+
+        // Step 2: Get max awarded level per programme
+        $awardedLevels = StudentExitAward::where('student_id', $this->student_id)
+            ->join('programme_exit_awards', 'student_exit_awards.programme_exit_award_id', '=', 'programme_exit_awards.id')
+            ->join('exit_awards', 'programme_exit_awards.exit_award_id', '=', 'exit_awards.id')
+            ->select('programme_exit_awards.programme_id', DB::raw('MAX(exit_awards.level_id) as max_level'))
+            ->groupBy('programme_exit_awards.programme_id')
+            ->pluck('max_level', 'programme_exit_awards.programme_id');
+
+        // Step 3: Get the active batch and its programme_id
+        $activeBatch = BatchStudent::with('batch.config')
+            ->where('student_id', $this->student_id)
+            ->where('status', 'active')
+            ->first();
+
+        if (! $activeBatch || ! $activeBatch->batch || ! $activeBatch->batch->config) {
+            return collect(); // no awards without active batch
+        }
+
+        $programmeId = $activeBatch->batch->config->programme_id;
+
+        // Step 4: Get available awards for that programme above previously awarded level
+        return ProgrammeExitAward::with(['programme', 'exitAward.level'])
+            ->where('programme_id', $programmeId)
+            ->whereNotIn('id', $alreadyAssigned)
+            ->where('default_award', false)
+            ->when(isset($awardedLevels[$programmeId]), function ($query) use ($awardedLevels, $programmeId) {
+                $query->whereHas('exitAward', function ($sub) use ($awardedLevels, $programmeId) {
+                    $sub->where('level_id', '>', $awardedLevels[$programmeId]);
+                });
+            })
+            ->get();
+    }
+
+
+
+
+
+
+//Hybrid executing using mysql engine and in memory
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use App\Models\StudentExitAward;
+use App\Models\ProgrammeExitAward;
+use App\Models\BatchStudent;
+
+public function filterAwards(): Collection
+    {
+        // Step 1: Get already assigned award IDs for this student
+        $alreadyAssigned = StudentExitAward::where('student_id', $this->student_id)
+            ->pluck('programme_exit_award_id')
+            ->toArray();
+
+        // Step 2: Get max awarded level per programme
+        $awardedLevels = StudentExitAward::where('student_id', $this->student_id)
+            ->join('programme_exit_awards', 'student_exit_awards.programme_exit_award_id', '=', 'programme_exit_awards.id')
+            ->join('exit_awards', 'programme_exit_awards.exit_award_id', '=', 'exit_awards.id')
+            ->select('programme_exit_awards.programme_id', DB::raw('MAX(exit_awards.level_id) as max_level'))
+            ->groupBy('programme_exit_awards.programme_id')
+            ->pluck('max_level', 'programme_exit_awards.programme_id');
+
+        // Step 3: Get active batch
+        $activeBatch = BatchStudent::with('batch.config')
+            ->where('student_id', $this->student_id)
+            ->where('status', 'active')
+            ->first();
+
+        if (! $activeBatch || ! $activeBatch->batch || ! $activeBatch->batch->config) {
+            return collect();
+        }
+
+        $programmeId = $activeBatch->batch->config->programme_id;
+        $awardedLevel = $awardedLevels[$programmeId] ?? null;
+
+        // Step 4: Load all potential awards for this programme
+        return ProgrammeExitAward::with(['programme', 'exitAward.level'])
+            ->where('programme_id', $programmeId)
+            ->get()
+            ->filter(function ($award) use ($alreadyAssigned, $awardedLevel) {
+                if ($award->default_award) return false;
+                if (in_array($award->id, $alreadyAssigned)) return false;
+                if ($awardedLevel && $award->exitAward->level_id <= $awardedLevel) return false;
+                return true;
+            });
+    }

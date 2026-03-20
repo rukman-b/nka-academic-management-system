@@ -1,0 +1,8 @@
+Guessing the expected guard by the route or url
+===============================================
+
+ //1) student.password.reset
+ $guard = explode('.', request()->route()->getName())[0]; // 'student'
+
+ //2) https://localhost:8000/student/password/reset
+ return request()->segment(1) ?? 'web'; // e.g. 'student' or 'employer' with a fallback

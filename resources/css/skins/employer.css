@@ -1,0 +1,451 @@
+    
+    
+    
+    
+
+            .breadcrumb-item > a {  color:black!important;  }  
+        .breadcrumb-item > a:hover {  color:#16537e!important;  }  
+        .breadcrumb-item.active {  color:black!important;  }  
+    
+
+            .dark-mode, .preloader { 
+             color:black!important;              background-color:#eeeeee!important;         }
+
+
+        .dark-mode .info-box,
+        .dark-mode .card,
+        .dark-mode .main-footer,
+        .dark-mode .products-list > .item,
+        .dark-mode .product-description,
+        .dark-mode .users-list-name,
+        .dark-mode .nav-pills .nav-link,
+        .dark-mode .users-list-date,
+        .dark-mode .direct-chat-timestamp,
+        .dark-mode .content-wrapper,
+        [class*="sidebar-dark"] .btn-sidebar, [class*="sidebar-dark"] .form-control-sidebar  {
+             color:black;              background-color:#eeeeee;         }
+
+                    body :is(h1,h2,h3,h4,h5,h6) :not(.card),
+            pre {
+                 color:black;             }
+        
+                    body .content-header :is(h1,h2,h3,h4,h5,h6) {
+                 color:black;             }
+            
+    
+    
+
+    
+    
+            .navbar, 
+        .navbar-brand { 
+             color:black!important;              background-color:#f3f6f4!important;         }
+    
+            .navbar-nav .nav-link { 
+             color:black!important;  
+            }
+    
+
+
+            .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+             background-color:#999999!important;              color:white!important;         }
+    
+            .nav-header {
+             color:black!important;         }
+    
+            .main-header {   border-bottom: 1px solid black!important;  }
+    
+
+            .main-sidebar { 
+             color:black!important;              background-color:#eeeeee!important;         }
+    
+            .nav-treeview > .nav-item > .nav-link {  color:black!important;  }
+        .sidebar a {  color:black!important;  }
+    
+            .nav-treeview > .nav-item > .nav-link.active{
+             color:white!important;              background-color:#5b5b5b!important;         }
+    
+
+    
+    
+
+            .main-footer { 
+             color:black;              background-color:#f3f6f4;         }
+     
+             .main-footer a {  color:#0004ff;  }
+     
+             .main-footer a:hover {  color:#d91414;  }
+     
+             .main-footer {   border-top: 1px solid black!important;  }
+    
+
+            .brand-link { 
+             color:black!important;              background-color:#eeeeee!important;               border-bottom: 1px solid black!important;                 
+        }
+    
+            .brand-link:hover {  color:#5b5b5b!important;  }
+    
+            .info-box, .page-link, .list-group-item, .register-box, .login-card-body, .register-card-body, .dropdown-item, .dropdown-menu, .callout,
+        .card, .card-comments, .card-comments .username, .card-comments .comment-text, .direct-chat-timestamp,
+        .attachment-block, .attachment-block .attachment-text, 
+        .timeline > div > .timeline-item,
+        .timeline > div > .timeline-item > .timeline-header,
+        blockquote { 
+             color:black;              background-color:#eeeeee; }
+    
+            .post,
+        .fc-theme-bootstrap a:not([href]),
+        .user-block .description { 
+             color:black; 
+        }
+    
+
+            .card a:not(.btn,i,.page-link), .card-comments a:not(.btn,i,.page-link),
+        .info-box a:not(.btn,i,.page-link), .callout a:not(.btn,i,.page-link), .page-link a:not(.btn,i,.page-link),
+        .timeline > div > .timeline-item a:not(.btn,i,.page-link),
+        .timeline > div > .timeline-item > .timeline-header a:not(.btn,i,.page-link),
+        .card .nav-pills .nav-link a:not(.btn,i,.page-link),
+        blockquote a:not(.btn,i,.page-link) { color:#0004ff; }
+    
+            .card a:hover:not(.btn,i,.page-link), .card-comments a:hover:not(.btn,i,.page-link),
+        .info-box a:hover:not(.btn,i,.page-link), .callout a:hover:not(.btn), .page-link a:hover :not(.btn,i,.page-link),
+        .timeline > div > .timeline-item a:hover:not(.btn,i,.page-link),
+        .timeline > div > .timeline-item > .timeline-header a:hover:not(.btn,i,.page-link),
+        blockquote a:hover:not(.btn,i,.page-link) {  color:#d91414!important;  }
+    
+            .login-card-body { 
+             color:black!important;              background-color:#eeeeee!important;  }
+    
+            .btn-tool {
+             color:black!important; 
+        }
+    
+
+    
+            .card,
+        .small-box,
+        .info-box,
+        .alert,
+        .callout,
+        .timeline-item,
+        .color-palette-set { 
+              border: 1px solid black!important;                 
+        }
+    
+            .card-header {
+              border-bottom: 1px solid black!important;                 
+        }
+    
+            .form-control:not(.is-valid,.is-warning,.is-invalid), 
+        .form-control-sidebar,
+        .select2-container--default .select2-selection--single,
+        .select2-container--default .select2-selection--multiple,
+        .select2-container--bootstrap4 .select2-selection--single .select2-selection__rendered,
+        .select2-dropdown,
+        .ranges,
+        .select2-container--bootstrap4 .select2-selection,
+        .bootstrap-duallistbox-container select,
+        .input-group-text,
+        .todo-list > li,
+        .custom-file-label,
+
+        .custom-select { 
+                         background:#eeeeee!important;              
+                  border-top: 1px solid black !important;                    border-left: 1px solid black !important;                    border-bottom: 1px solid black !important;                    border-right: 1px solid black !important;  
+                            
+        }
+    
+            .form-control { 
+                         background-color:#eeeeee!important;             
+        }
+    
+      
+        .input-group-append > .input-group-text {
+            padding: 0rem .5rem 0rem .5rem !important;  
+            border-left: 0px solid black !important;
+
+        }
+
+        .input-group-append > .btn, .input-group-append > .btn:hover {
+            padding: 0rem .5rem 0rem .5rem !important;  
+            border-left: 0px solid black !important;
+        }
+
+        .input-group-prepend > .input-group-text {
+            padding: 0rem .75rem 0rem .75rem !important;  
+            border-right: 0px solid black !important;
+
+        }
+
+        .input-group-prepend > .btn {
+            padding: 0rem .75rem 0rem .75rem !important;  
+            border-right-width: 0px!important;
+
+        }
+        
+
+
+
+    
+
+
+
+            .custom-file-label::after {
+                         background:#eeeeee!important; 
+        }
+    
+
+    
+            span > .select2-search__field {
+             border: 1px solid black;                 
+        }
+    
+            .select2-search__field { 
+                         background-color:#eeeeee!important;         }
+    
+            .form-control:focus, 
+        .select2-container--default .select2-selection--single:focus,
+        .select2-container--default .select2-selection--multiple:focus,
+        .select2-container--default .select2-selection--multiple .select2-selection__choice,
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice,
+        .select2-container--default .select2-dropdown .select2-search__field:focus, .select2-container--default .select2-search--inline .select2-search__field:focus,
+        .select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-results__option--highlighted[aria-selected]:hover,
+        .select2-container--bootstrap4 .select2-results__option--highlighted, .select2-container--bootstrap4 .select2-results__option--highlighted.select2-results__option[aria-selected="true"],
+        .custom-select:focus { 
+                         background-color:white!important;               border: 1px solid black;     
+        }
+    
+
+    
+    
+
+    
+
+            .bootstrap-switch, 
+        .bootstrap-switch.bootstrap-switch-focused,
+        .sp-original-input-container .sp-add-on { 
+                          border: 1px solid black;     
+        }
+    
+            .bootstrap-switch .bootstrap-switch-label { 
+             background:#eeeeee;         }
+    
+        
+            .bootstrap-switch .bootstrap-switch-handle-on {   border-right: 1px solid black;  }
+        .bootstrap-switch .bootstrap-switch-handle-off {   border-left: 1px solid black;  }
+        .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single,
+        .select2-container--bootstrap4.select2-container--focus .select2-selection { 
+              border: 1px solid black;    
+        }
+    
+
+
+
+
+
+
+            .table { 
+             color:black!important;              background-color:#f3f6f4!important; 
+              border-left: 1px solid black!important;                 
+              border-top: 1px solid black!important;                 
+              border-bottom: 1px solid black!important;                 
+        }
+
+        .table td { 
+             color:black!important;  
+              border-bottom: 1px solid black!important;                 
+              border-right: 1px solid black!important;    
+        }   
+    
+
+            .table thead th,
+        .table.table-head-fixed thead tr:nth-child(1) th { 
+             color:black!important;              background-color:#bcbcbc;              color:black;              background-color:#bcbcbc; box-shadow: inset 0 0px 0 #dee2e6;               border-bottom: 1px solid black!important;                 
+              border-right: 1px solid black!important;    
+        }
+
+        table > tfoot > tr > th { 
+             color:black!important;               border-bottom: 1px solid black!important;                 
+              border-right: 1px solid black!important;     
+              border-top: 1px solid black!important;    
+             background-color:#bcbcbc; box-shadow: inset 0 0px 0 #dee2e6;         }
+    
+            table > thead > tr > th {   border-top: 0px!important;  }
+    
+    
+    
+            .table td, .table th {   border-top: 0px!important;  }
+    
+            .table-bordered td, .table-bordered th {
+              border: 1px solid black;    
+        }
+    
+
+            .jsgrid-table { 
+             color:black;               border-left: 1px solid black;     
+              border-top: 1px solid black;     
+              border-bottom: 1px solid black;     
+             background-color:#f3f6f4;         }
+    
+            .jsgrid-table td { 
+             color:black;               border-bottom: 1px solid black;     
+              border-right: 1px solid black;     
+        }   
+    
+
+            .jsgrid-header-row > .jsgrid-header-cell {  
+              border-right: 1px solid black!important;     
+             color:black!important;              background-color:#bcbcbc; box-shadow: inset 0 0px 0 #dee2e6;         }
+
+
+    
+            .jsgrid-row > .jsgrid-cell { 
+             color:black;              background-color:#f3f6f4;         }
+    
+
+            .jsgrid-alt-row > .jsgrid-cell, tr.even > td
+        { 
+             color:black;              background-color:#999999;         }
+    
+
+            .jsgrid-selected-row > .jsgrid-cell, 
+        td.fc-daygrid-day:hover,
+        tr:hover:not(.fc-scrollgrid-section) td:not(.fc-daygrid-day,.day,.weekend) { 
+             color:white!important;              background-color:#5b5b5b;              background:#5b5b5b;               border-color: black;     
+        }
+    
+
+            .jsgrid-header-row > .jsgrid-header-cell {   border-top:0px!important;  }
+        .jsgrid-edit-row > .jsgrid-cell, .jsgrid-filter-row > .jsgrid-cell, .jsgrid-grid-body, .jsgrid-grid-header, .jsgrid-header-row > .jsgrid-header-cell, .jsgrid-insert-row > .jsgrid-cell {
+              border:0px;         }
+    
+
+            .page-item.disabled .page-link {
+             background-color:#bcbcbc!important;              color:black!important;               border-color: black;     
+
+        }
+    
+            a.page-link {
+             background-color:#eeeeee!important;              color:black!important;               border-color: black;     
+        }
+    
+            .page-link:hover {
+             background-color:#444444!important;              color:white!important;         }
+    
+
+            .page-item.active .page-link {
+             background-color:#5b5b5b!important;              color:black!important;               border-color: black;     
+        }
+    
+            .btn, .btn:hover, .page-link {   border: 1px solid black !important;   }
+        .dropdown-divider { border-top: 1px solid black; }
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+      
+        .alert-warning { background-color: #3d85c6 !important; } 
+        .bg-primary { background-color: #3d85c6 !important; }
+        .btn-primary { background-color: #3d85c6 !important; }
+        .btn-outline-primary { color:#3d85c6 !important; }
+        .btn-outline-primary:hover { color:white !important; background-color: #3d85c6 !important;  }
+        .btn.bg-gradient-primary:hover { background: #3d85c6 !important; }
+
+        .active .bs-stepper-circle { background-color: #3d85c6!important; }
+
+
+          
+            .bg-gradient-primary { background: #3d85c6 linear-gradient(180deg,#9fc5e8,#3d85c6) repeat-x !important; }
+          
+
+
+        .card-primary:not(.card-outline) > .card-header { background-color: #3d85c6 !important; }
+        .card-primary.card-outline-tabs > .card-header a.active {
+            border-top: 3px solid #3d85c6!important;
+        }
+
+        .icheck-primary > input:first-child:checked + input[type="hidden"] + label::before, .icheck-primary > input:first-child:checked + label::before {
+            background-color: #3d85c6!important;
+            border-color: #3d85c6!important;
+            border: 1px solid #3d85c6!important;
+        }
+
+        .icheck-primary > input:first-child:hover + input[type="hidden"] + label::before, .icheck-primary > input:first-child:hover + label::before {
+            border: 3px solid #3d85c6!important;
+
+        }
+
+        .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+            background: #3d85c6!important;     
+                    }
+        
+        .custom-control-input:checked ~ .custom-control-label::before { background-color: #3d85c6!important; }
+        .custom-range::-moz-range-thumb { background-color: #3d85c6!important; }
+        .progress-bar-primary { background-color: #3d85c6!important; }
+        .text-primary { color: #3d85c6!important; }
+        .card-primary:not(.card-outline) > .card-header { background-color: #3d85c6!important; }
+        select > option:checked { background: #3d85c6 -webkit-linear-gradient(bottom, #3d85c6 0%, #3d85c6 100%)!important; }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+                        background-color: #3d85c6!important;
+        }
+
+        .direct-chat-primary .right > .direct-chat-text::after, .direct-chat-primary .right > .direct-chat-text::before {
+            border-left-color: #3d85c6!important;
+        }
+
+        .direct-chat-primary .left > .direct-chat-text::after, .direct-chat-primary .left > .direct-chat-text::before {
+            border-right-color: #3d85c6!important;
+        }
+
+        .direct-chat-primary .right > .direct-chat-text {
+            background-color: #3d85c6!important;
+            border-color: #3d85c6!important;
+                    }
+
+        .direct-chat-primary .left > .direct-chat-text {
+            background-color: #3d85c6!important;
+            border-color: #3d85c6!important;
+                    }
+
+        .badge-primary {
+                        background-color: #3d85c6!important;
+        }
+
+        blockquote { border-left-color: #3d85c6; }
+        blockquote.quote-primary { border-color: #3d85c6!important; }
+
+        .card-primary.card-outline { border-top: 3px solid #3d85c6; }
+        .callout.callout-primary { border-left-color: #3d85c6!important; }
+
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+
+    /* MISC TWEAK */
+    .login-logo, .register-logo {
+        margin-bottom: 0rem;
+    }
+

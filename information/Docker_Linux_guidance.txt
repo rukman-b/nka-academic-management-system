@@ -1,0 +1,90 @@
+A️⃣ Canonical command sequence
+
+From Docker daemon start → app running
+
+This is the official, recruiter-grade workflow for your project.
+
+1️⃣ Start Docker Engine (daemon)
+sudo systemctl start docker
+
+
+(Optional but recommended at boot)
+
+sudo systemctl enable docker
+
+
+Verify daemon + permissions:
+
+docker ps
+
+
+✅ You should see an empty table, no errors.
+
+2️⃣ Go to the project root
+cd ~/work/Projects/nka-academic-management-system
+
+3️⃣ Bring up the containers (first time or after changes)
+docker compose up -d --build
+
+
+This will start:
+
+MariaDB
+
+Redis
+
+Laravel (PHP-FPM)
+
+Nginx
+
+Node/Vite
+
+4️⃣ Install PHP dependencies (first run only)
+docker compose exec laravel composer install
+
+5️⃣ Generate Laravel app key (first run only)
+docker compose exec laravel php artisan key:generate
+
+6️⃣ Run migrations + seeders
+docker compose exec laravel php artisan migrate --seed
+
+7️⃣ Access the app
+
+🌐 App: http://localhost:8000
+
+🗄 phpMyAdmin: http://localhost:8080
+
+⚡ Vite dev server: http://localhost:5173
+
+8️⃣ Stop the app (safe, keeps volumes)
+docker compose down
+
+
+⚠️ Do NOT use -v unless you intentionally want to delete volumes.
+
+9️⃣ Restart later (normal daily workflow)
+sudo systemctl start docker
+docker compose up -d
+
+Run Tinker correctly (Docker)
+=========================
+docker exec -it laravel php artisan tinker
+
+restart nginx 
+==============
+docker compose restart nginx
+
+Full r:l result
+=====================
+docker exec laravel php artisan route:list -v | grep livewire
+
+
+Run seeders
+=========================
+docker exec -it nka-hub-laravel-1 php artisan db:seed
+
+session delete
+=================================
+docker compose exec redis redis-cli -n 0 KEYS "*"
+
+docker compose exec redis redis-cli -n 0 DEL "nka_hub_cache_4HxY26jlIhxGAwqyrjWo7GZZhcxm2G3v91uTDYh0"

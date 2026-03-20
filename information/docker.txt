@@ -1,0 +1,55 @@
+DOCKER COMMANDS
+=======================================================================
+=======================================================================
+
+
+1) Login to the laravel docker 
+docker exec -it laravel bash
+
+2) Switching between docker and local environments while you are on the windows
+I)  .\switch-env.bat docker : This changes the .env file to be used in the docker containers.
+II) .\switch-env.bat local  : This changes the .evn file to be used in the local environment.
+
+Powershell alias : 
+    command to setup the alias : Set-Alias switchenv "$PWD\switch-env.bat
+    Run that alias  : switchenv docker or switchenv local
+
+
+3) Switching between docker and local environments while you are on a docker laravel containers
+Note: You have to run this command every time you run the docker compose build command to make the file executable
+command to run : chmod +x switch-env.sh
+I) bash ./switch-env.sh docker   : This changes the .env file to be used in the docker containers.
+II) ./switch-env.sh local   : This changes the .evn file to be used in the local environment.
+
+4) Restart a container
+command to run : docker restart laravel
+
+
+
+
+CRON JOBS
+================================================================================================
+================================================================================================
+
+4) Check if Laravel scheduler is running every minute
+command to run : crontab -l
+expected result : * * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1
+
+
+CleanOldLoginAttempts command
+**************************************************
+1) Run it manually : php artisan cleanup:login-attempts
+2) Manually trigger shedule : php artisan schedule:run
+
+3) Tail the log
+command to run : docker exec -it laravel tail -f /var/www/html/storage/logs/scheduler.log
+
+4) Manually run the scheduler once
+command to run : docker exec -it laravel php artisan schedule:run
+
+5) Force job to run even if it’s not due, run it directly
+command to run : docker exec -it laravel php artisan cleanup:login-attempts
+
+6) How to start cron service
+command to run : service cron start
+
