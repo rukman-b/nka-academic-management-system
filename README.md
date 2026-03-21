@@ -21,6 +21,13 @@ This project is part of a **BCS Professional Graduate Diploma (PGD)** submission
 The system aims to unify academic and administrative operations into a scalable, role-based platform.
 
 ---
+### 🧭 Explore the Architecture
+
+For a detailed breakdown of the system design and internal interactions:
+
+👉 [ARCHITECTURE.md](ARCHITECTURE.md)
+
+---
 ## 🏗️ System Architecture
 
 ```mermaid
