@@ -21,19 +21,7 @@ class EmployerSeeder extends Seeder
 
         ]);
 
-        for ($i = 1; $i <= 19; $i++) {
-            $fakeCompany = fake()->company();
-            $prefix = strtolower(strtok($fakeCompany, ' '));
-            $prefix = preg_replace('/[^a-z0-9]/', '', $prefix); // keep only alphanumeric
-            $fakeEamil = $prefix.$i.'@gmail.com';
-            Employer::create([
-                'name' => $fakeCompany,
-                'email' => $fakeEamil,
-                'image_path' => '', // or use fake()->imageUrl()
-                'password' => Hash::make('password'),
-                'remember_token' => Str::random(60),
-                'phone' => fake()->phoneNumber(),
-            ]);
-        }
+        
+    
     }
 }
