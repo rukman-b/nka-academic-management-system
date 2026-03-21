@@ -23,9 +23,7 @@ Route::middleware(['auth:'. Guards::WEB, 'email.verified:'. Guards::WEB, 'role:'
         // Users Management
         Route::get('users', UserIndex::class)->name('users');
         Route::get('users/create', UserForm::class)->name('users.create');
-        Route::put('users/{user}/edit', UserForm::class)->name('users.edit'); // <- GET instead of PUT for showing the form
-        // Route::get('users/{user}/edit', UserForm::class)->name('users.edit'); // <- GET instead of PUT for showing the form
-
+        Route::put('users/{user}/edit', UserForm::class)->name('users.edit'); 
         // Roles Management
         Route::get('roles', RoleIndex::class)->name('roles');
         Route::get('roles/create', RoleForm::class)->name('roles.create');

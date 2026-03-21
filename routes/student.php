@@ -12,7 +12,6 @@ Route::middleware([
     'email.verified:' . Guards::STUDENT,
     ])->prefix('student')->as('student.')->group(function () {
 
-    // Route::get('/dashboard', [App\Http\Controllers\Student\StudentDashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
 });
 

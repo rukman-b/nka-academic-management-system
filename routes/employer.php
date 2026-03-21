@@ -11,7 +11,6 @@ Route::middleware([
     'email.verified:' . Guards::EMPLOYER,
 ])->prefix(Guards::EMPLOYER)->as(Guards::EMPLOYER.'.')->group(function () {
 
-    // Route::get('/dashboard', [App\Http\Controllers\Student\StudentDashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
 });
 
