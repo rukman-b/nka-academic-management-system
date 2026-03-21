@@ -48,7 +48,6 @@ final class Guards
     public const WEB      = 'web';
     public const STUDENT  = 'student';
     public const EMPLOYER = 'employer';
-    public const TESTUSER = 'testuser';
 
     /**
      * Non-session authentication guard (e.g. API tokens / Sanctum).
@@ -64,7 +63,6 @@ final class Guards
         self::WEB,
         self::STUDENT,
         self::EMPLOYER,
-        self::TESTUSER,
     ];
 
     private const NON_SESSION_GUARDS = [
@@ -84,7 +82,6 @@ final class Guards
         self::WEB      => 'Web',
         self::STUDENT  => 'Student',
         self::EMPLOYER => 'Employer',
-        self::TESTUSER => 'Test User',
         self::API      => 'API',
     ];
 

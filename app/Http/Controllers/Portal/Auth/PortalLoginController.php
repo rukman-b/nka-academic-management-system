@@ -22,7 +22,6 @@ final class PortalLoginController extends Controller
      * Expected routes:
      * - /student/login
      * - /employer/login
-     * - /testuser/login
      *
      * Falls back to Guards::default() if the prefix is not a recognised portal guard.
      */

@@ -83,9 +83,6 @@ final class AdminLTESettingsService
                 // Keep empty for now, ready for employer theme later
                 // 'adminlte.classes_body' => 'employer-theme',
             ],
-            Guards::TESTUSER => [
-                // No overrides by default
-            ],
             default => [
                 // Safe default for any future portal guard
             ],

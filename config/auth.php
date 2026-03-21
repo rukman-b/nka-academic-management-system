@@ -59,10 +59,6 @@ return [
             'provider' => 'employers',
          ],
 
-        Guards::TESTUSER => [
-            'driver' => 'session',
-            'provider' => 'testusers',
-         ],
 
     ],
 
@@ -104,10 +100,6 @@ return [
             'model' => App\Models\Employer::class,
         ],
 
-        'testusers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Testuser::class,
-        ],
     ],
 
     /*
@@ -151,12 +143,6 @@ return [
             'throttle' => 60,
         ],
 
-        'testusers' => [
-            'provider' => 'testusers',
-            'table' => 'testuser_password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
     ],
 
     /*

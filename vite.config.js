@@ -34,7 +34,6 @@ export default defineConfig({
         'resources/js/app.js',  //Adminlte default js
         'resources/css/skins/student.css',     
         'resources/css/skins/employer.css',     
-        'resources/css/skins/testuser.css',     
         'resources/scss/skins/student/student.scss',
       ],
       refresh: true,

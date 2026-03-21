@@ -114,7 +114,6 @@ return [
 
             'student'  => 'student.dashboard',
             'employer' => 'employer.dashboard',
-            'testuser' => 'testuser.dashboard',
         ],
 
         // Role priority per guard (used when resolving a dashboard role)
@@ -127,7 +126,6 @@ return [
             'web'      => 'users',
             'student'  => 'students',
             'employer' => 'employers',
-            'testuser' => 'testusers',
         ],
     ],
 
@@ -143,7 +141,6 @@ return [
             'web'      => '', // staff uses default AdminLTE styles
             'student'  => 'resources/scss/skins/student/student.scss',
             'employer' => 'resources/css/skins/employer.css',
-            'testuser' => 'resources/css/skins/testuser.css',
         ],
 
         /*
@@ -159,9 +156,6 @@ return [
                 'adminlte.classes_body'  => 'glassmorphism-theme',
             ],
             'employer' => [
-                'adminlte.layout_topnav' => true,
-            ],
-            'testuser' => [
                 'adminlte.layout_topnav' => true,
             ],
         ],

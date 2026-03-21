@@ -65,7 +65,7 @@ Route::prefix('email')->as('verification.')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Portal guards auth (student/employer/testuser) - guest-only routes
+| Portal guards auth (student/employer) - guest-only routes
 |--------------------------------------------------------------------------
 | Generates routes like:
 |   /student/login, /student/register, /student/password/reset, ...

@@ -24,7 +24,6 @@ return Application::configure(basePath: dirname(__DIR__))
             __DIR__.'/../routes/admin.php',
             __DIR__.'/../routes/student.php',
             __DIR__.'/../routes/employer.php',
-            __DIR__.'/../routes/testuser.php',
             __DIR__.'/../routes/spatie_common_routes.php',
 
         
