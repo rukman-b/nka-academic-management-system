@@ -82,6 +82,18 @@ Originally designed for:
 👉 Due to time constraints and system complexity, this version delivers a **fully functional staff portal**, with other modules planned for future development.
 
 ---
+## 📸 System Preview
+
+### 🖥️ Dashboard
+![Dashboard](docs/images/dashboard.png)
+
+### 👥 User Management
+![Users](docs/images/users.png)
+
+### 📚 Module Management
+![Modules](docs/images/modules.png)
+
+---
 ## 🚧 Current System Status
 
 ### ✅ Completed (Core System)
