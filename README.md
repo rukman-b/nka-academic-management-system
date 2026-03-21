@@ -200,6 +200,54 @@ This guide covers:
 - Application access instructions
 
 ---
+## 🔐 Default Credentials
+
+The system includes pre-seeded user accounts for testing different roles.
+
+### 📌 Password for all accounts
+```text
+password
+```
+---
+### 👥 Staff Accounts (web guard)
+
+| Role        | Email                  |
+|------------|------------------------|
+| Sysadmin   | sysadmin@nka.test      |
+| Superadmin | superadmin@nka.test    |
+| Admin      | admin@nka.test         |
+
+---
+### 🎓 Student Account (student guard)
+
+| Role    | Email                |
+|--------|----------------------|
+| Student | student@example.com |
+
+---
+### 🏢 Employer Account (employer guard)
+
+| Role     | Email                  |
+|----------|------------------------|
+| Employer | employer@example.com  |
+
+---
+### 💡 Notes
+
+- All accounts use the same password for simplicity in testing  
+- Student and employer modules are partially implemented (Phase 1)  
+- These accounts allow you to explore authentication and role-based access  
+---
+
+### 👤 Available Roles
+
+You can log in using any seeded user based on their assigned role:
+
+- System Admin  
+- Superadmin  
+- Admin  
+
+---
 ## 🧪 Seeder Strategy
 
 To simplify setup:
