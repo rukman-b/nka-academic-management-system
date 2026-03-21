@@ -210,12 +210,11 @@ The system is designed for expansion into a **full multi-stakeholder platform**.
 ---
 ## 🤖 AI Integration Roadmap
 
-To align with modern AI-driven systems, the architecture supports future integration with external AI services.
-
+To align with modern AI-driven systems, the architecture is designed to support integration with external AI services and data-driven components.
 
 ### 🎯 Relevance to AI Engineering
 
-These enhancements are intentionally aligned with real-world AI engineering practices, including:
+These planned enhancements reflect real-world AI engineering practices, including:
 
 - data-driven decision systems  
 - predictive modelling pipelines  
@@ -224,47 +223,57 @@ These enhancements are intentionally aligned with real-world AI engineering prac
 
 This positions the system as a foundation for transitioning into AI-driven applications.
 
-#### 🔹 1. Intelligent Module Recommendation
+---
 
-* Suggest modules based on:
+### 🔹 1. Intelligent Module Recommendation
 
-  * student performance
-  * skill gaps
+Suggest modules based on:
 
+- student performance  
+- identified skill gaps  
 
-#### 🔹 2. Student Performance Prediction
+---
 
-* Predict:
+### 🔹 2. Student Performance Prediction
 
-  * academic risk
-  * completion likelihood
+Predict:
 
+- academic risk  
+- completion likelihood  
 
-#### 🔹 3. Employer Matching System
+---
 
-* Match students to opportunities based on:
+### 🔹 3. Employer Matching System
 
-  * skills
-  * modules completed
+Match students to opportunities based on:
 
+- skills  
+- modules completed  
 
-#### 🔹 4. AI-Powered Insights Dashboard
+---
 
-* Trends and predictions for administrators
+### 🔹 4. AI-Powered Insights Dashboard
 
+Provide administrators with:
 
-#### 🔹 5. Python AI Microservices Integration
+- trend analysis  
+- predictive insights  
+- anomaly detection  
 
-```
-Laravel → API → Python (ML Model) → Response
-```
+---
+
+### 🔹 5. Python AI Microservices Integration
+
+The system is designed to integrate with external AI services:
+
+**Laravel → API → Python (ML Model) → Response**
+
 
 Technologies:
 
-* FastAPI / Flask
-* Scikit-learn / TensorFlow
-* REST APIs
-
+- FastAPI / Flask  
+- Scikit-learn / TensorFlow  
+- REST APIs  
 ---
 ## 🎯 Design Principles
 
