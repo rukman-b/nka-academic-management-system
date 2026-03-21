@@ -14,7 +14,6 @@
 A Laravel-based academic management system designed using **UK RQF standards**, featuring **multi-guard RBAC**, modular curriculum structure, and Docker-based deployment.
 
 ---
-
 ## 📌 Project Overview
 
 This project is part of a **BCS Professional Graduate Diploma (PGD)** submission (Distinction) and represents a **real-world system design and implementation**.
@@ -63,7 +62,6 @@ flowchart TB
     Docker --> Redis
 ```
 ---
-
 ## 🎯 Project Scope
 
 This repository represents **Phase 1 of the system**, focusing on the **staff-side implementation**.
@@ -77,7 +75,6 @@ Originally designed for:
 👉 Due to time constraints and system complexity, this version delivers a **fully functional staff portal**, with other modules planned for future development.
 
 ---
-
 ## 🚧 Current System Status
 
 ### ✅ Completed (Core System)
@@ -92,14 +89,12 @@ Originally designed for:
 - Redis caching with tagged strategy
 
 ---
-
 ### ⚠️ Partially Implemented
 
 - Student portal (authentication + basic UI scaffolding)
 - Employer portal (authentication + basic UI scaffolding)
 
 ---
-
 ### 🔮 Planned Enhancements
 
 - Full student lifecycle management
@@ -109,7 +104,6 @@ Originally designed for:
 - Academic progression tracking
 
 ---
-
 ## ⚙️ Tech Stack
 
 | Category        | Technology |
@@ -123,42 +117,20 @@ Originally designed for:
 | Build Tools    | Vite |
 
 ---
+## 🚀 Quick Start
 
-## 🚀 Quick Start (Docker)
+To run this project locally using Docker, follow the setup guide:
 
-#### 1️⃣ Start Docker
-```bash
-sudo systemctl start docker
-```
-#### 2️⃣ Navigate to project
-```bash
-cd nka-academic-management-system
-```
-#### 3️⃣ Build & start containers
-```bash
-docker compose up -d --build
-```
-#### 4️⃣ Install dependencies
-```bash
-docker compose exec laravel composer install
-```
-#### 5️⃣ Generate app key
-```bash
-docker compose exec laravel php artisan key:generate
-```
-#### 6️⃣ Run migrations
-```bash
-docker compose exec laravel php artisan migrate
-```
-#### 7️⃣ Access the application
-| Service     | URL                                            |
-| ----------- | ---------------------------------------------- |
-| Application | [http://localhost:8000](http://localhost:8000) |
-| phpMyAdmin  | [http://localhost:8080](http://localhost:8080) |
-| Vite Dev    | [http://localhost:5173](http://localhost:5173) |
+👉 [SETUP.md](SETUP.md)
+
+This includes:
+
+- Docker environment setup
+- Database migration and seeding
+- Sample dataset import
+- Application access instructions
 
 ---
-
 ## 🧪 Seeder Strategy
 
 To simplify setup:
@@ -171,7 +143,6 @@ To simplify setup:
 Optional: You may import your own dataset or extend seeders as needed.
 
 ---
-
 ## ⚡ Caching Strategy
 
 * Redis-based caching
@@ -186,7 +157,6 @@ Cache::tags(['level'])->remember('levels_all', now()->addHour(), function () {
 ```
 
 ---
-
 ## 📚 Learning Value
 
 This project demonstrates:
@@ -199,7 +169,6 @@ This project demonstrates:
 * Real-world problem solving under constraints
 
 ---
-
 ## ⚠️ Important Notes
 
 * This is a **Phase 1 implementation**
@@ -207,7 +176,6 @@ This project demonstrates:
 * All data used is **synthetic (generated using Faker)**
 
 ---
-
 ## 👨‍💻 Author
 
 **Rukman Bernard**
@@ -217,7 +185,6 @@ This project demonstrates:
 * Research GitHub: [https://github.com/rukman-bernard]()
 
 ---
-
 ## ⭐ Final Note
 
 This project is part of a **continuous learning journey** and will be extended in future versions to support full multi-stakeholder functionality.
