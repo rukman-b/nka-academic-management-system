@@ -124,6 +124,26 @@ Full academic report:
 👉 [View Report](docs/report/NKA_Project_Report.pdf)
 
 ---
+## ⚠️ Academic Integrity Notice
+
+This project is published for **educational and reference purposes only**.
+
+Students are encouraged to:
+- study the architecture  
+- understand the implementation approach  
+- learn how to structure a distinction-level project  
+
+However:
+
+❌ Do NOT copy code directly  
+❌ Do NOT submit this work (fully or partially) as your own  
+❌ Do NOT reuse this project in academic submissions  
+
+Academic misconduct may lead to serious consequences in your institution.
+
+Use this project to **learn, not to copy**.
+
+---
 ## 🚧 Current System Status
 
 ### ✅ Completed (Core System)
