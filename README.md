@@ -1,231 +1,224 @@
-# NKA Academic Management System (NKA-AMS)
+<p align="center">
+  <img src="docs/images/banner.png" alt="NKA Academic Management System Banner">
+</p>
 
- **A modular, Dockerised academic management platform built with Laravel 11 and a multi-guard RBAC architecture.**
+# 🎓 NKA Academic Management System (Phase 1)
 
-***
+![Laravel](https://img.shields.io/badge/Laravel-11-red)
+![Livewire](https://img.shields.io/badge/Livewire-3-blue)
+![AdminLTE](https://img.shields.io/badge/AdminLTE-3-purple)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
+![Redis](https://img.shields.io/badge/Redis-Caching-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## 1. System Overview
-
-The **NKA Academic Management System (NKA-AMS)** is a Laravel-based web application designed to support structured academic administration workflows within higher education and vocational training environments.
-
-The system is engineered around a **multi-stakeholder architecture** and emphasises:
-
-* role and permission-based access control (RBAC)
-
-* guard-level authentication separation
-
-* centralised session management
-
-* reproducible containerised environments
-
-* documentation-driven engineering discipline
-
-This repository represents the **engineering baseline** of the system and serves as the foundation for requirement-driven functional expansion.
-
-***
-## 2. Architectural Principles
-
-The system is designed according to the following principles:
-
-### Separation of Concerns
-
-Authentication, session storage, caching, queue handling, and database persistence are isolated at the infrastructure level.
-
-### Stateless Application Layer
-
-The Laravel container is stateless. Persistent state is externalised to Redis and MariaDB.
-
-### Deterministic Multi-Guard Authentication
-
-Each stakeholder type operates under a dedicated guard with explicit session and access boundaries.
-
-### Infrastructure Reproducibility
-
-Docker and Docker Compose guarantee environment parity across development machines.
-
-### Documentation-First Development
-
-Architectural decisions are formalised and versioned alongside code changes.
+A Laravel-based academic management system designed using **UK RQF standards**, featuring **multi-guard RBAC**, modular curriculum structure, and Docker-based deployment.
 
 ---
- ## 3. Technical Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Laravel 11 (PHP 8.2) |
-| Authentication & Authorisation | Multi-guard architecture + Spatie Laravel Permission|
-| UI Framework | AdminLTE |
-| Frontend Tooling | Vite + Node.js |
-| Database | MariaDB (Dockerised) |
-| State Layer | Redis (phpredis extension) |
-| Environment | Docker & Docker Compose |
-| Testing | Isolated environment via .env.testing |
+## 📌 Project Overview
+
+This project is part of a **BCS Professional Graduate Diploma (PGD)** submission (Distinction) and represents a **real-world system design and implementation**.
+
+The system aims to unify academic and administrative operations into a scalable, role-based platform.
 
 ---
-## 4. Redis State Architecture
+## 🏗️ System Architecture
 
-Redis functions as the centralised state layer of the system and is responsible for:
+```mermaid
+flowchart TB
 
-* HTTP session storage
+    User[User]
 
-* Application caching
+    subgraph Client
+        Browser[Browser UI<br/>AdminLTE + Livewire]
+    end
 
-* Queue transport backend
+    subgraph App Layer
+        Laravel[Laravel 11 Application]
+        Livewire[Livewire Components]
+        RBAC[Spatie RBAC]
+    end
 
-To ensure isolation and predictability, Redis uses dedicated logical databases:
-| Function | Redis DB |
-|----------|----------|
-| Sessions | DB 0 |
-| Cache | DB 1 |
-| Queue | DB 2 |
+    subgraph Services
+        Redis[Redis Cache]
+        DB[(MariaDB Database)]
+    end
 
-Key characteristics:
+    subgraph Infrastructure
+        Docker[Docker Containers]
+        Nginx[Nginx Web Server]
+    end
 
-* Dedicated cache key prefix (`CACHE_PREFIX`)
+    User --> Browser
+    Browser --> Nginx
+    Nginx --> Laravel
+    Laravel --> Livewire
+    Laravel --> RBAC
+    Laravel --> DB
+    Laravel --> Redis
 
-* Dedicated session key prefix (`SESSION_PREFIX`)
+    Docker --> Nginx
+    Docker --> Laravel
+    Docker --> DB
+    Docker --> Redis
+```
+---
 
-* Queue lists stored as `queues:<queue-name>`
+## 🎯 Project Scope
 
-* No global Redis prefix at connection level
+This repository represents **Phase 1 of the system**, focusing on the **staff-side implementation**.
 
-* Docker service name used as Redis hostname (no internal localhost coupling)
+Originally designed for:
 
-This structure enables:
+- Staff (Administrators)
+- Students
+- Employers
 
-* horizontal scalability
-
-* cross-container session consistency
-
-* deterministic queue processing
-
-* key-collision prevention
-
-Redis usage can be independently verified via CLI-level inspection.
+👉 Due to time constraints and system complexity, this version delivers a **fully functional staff portal**, with other modules planned for future development.
 
 ---
-## 5. Development Environment (Docker)
 
-The system runs in a fully containerised development environment.
+## 🚧 Current System Status
 
-### Core Services
+### ✅ Completed (Core System)
 
-* **Laravel Application Container** (PHP runtime)
+- System Administrator, Superadmin, and Admin dashboards
+- Role-Based Access Control (Spatie Permissions)
+- Programme, Level, Module, Skill management
+- Curriculum structure aligned with UK RQF
+- Batch and configuration management
+- Reusable DataTable (search, sort, pagination, export)
+- Docker-based environment (Nginx, MariaDB, Redis)
+- Redis caching with tagged strategy
 
-* **Nginx** (HTTP server)
+---
 
-* **MariaDB** (persistent data)
+### ⚠️ Partially Implemented
 
-* **Redis** (state layer)
+- Student portal (authentication + basic UI scaffolding)
+- Employer portal (authentication + basic UI scaffolding)
 
-* **Node / Vite** (asset compilation)
+---
 
-* **phpMyAdmin** (optional development utility)
+### 🔮 Planned Enhancements
 
-### Start the Environment
+- Full student lifecycle management
+- Employer integration (internships, recruitment)
+- Automated alerts and notifications
+- Reporting and analytics dashboards
+- Academic progression tracking
 
+---
+
+## ⚙️ Tech Stack
+
+| Category        | Technology |
+|----------------|-----------|
+| Backend        | Laravel 11 |
+| Frontend       | Livewire 3 + AdminLTE 3 |
+| Database       | MariaDB |
+| Caching        | Redis |
+| Containerisation | Docker |
+| Testing        | Pest |
+| Build Tools    | Vite |
+
+---
+
+## 🚀 Quick Start (Docker)
+
+#### 1️⃣ Start Docker
+```bash
+sudo systemctl start docker
+```
+#### 2️⃣ Navigate to project
+```bash
+cd nka-academic-management-system
+```
+#### 3️⃣ Build & start containers
 ```bash
 docker compose up -d --build
 ```
-### Access Points
-| Service | URL |
-|---------|-----|
-| Application | `http://localhost:8000` |
-| phpMyAdmin | `http://localhost:8080` |
-
-All services communicate via Docker internal networking. No internal service relies on `localhost`.
-
- ---
- ## 6. Environment Configuration
-
-The project uses structured environment separation:
-
-| File | Purpose |
-|------|---------|
-| `.env` | Local development configuration (not committed) |
-| `.env.example` | Configuration template |
-| `.env.testing` | Isolated testing configuration |
-
-Sensitive values (keys, credentials, secrets) are excluded from version control.
-
----
-## 7\. Repository Structure (High-Level)
-| Directory | Purpose |
-|-----------|---------|
-| `app/` | Core application logic |
-| `config/` | Framework and architectural configuration |
-| `database/` | Migrations and seeders |
-| `docker/` | Container definitions and scripts |
-| `resources/` | Views and frontend assets |
-| `routes/` | Route definitions |
-| `storage/` | Logs, cache, runtime data |
+#### 4️⃣ Install dependencies
+```bash
+docker compose exec laravel composer install
+```
+#### 5️⃣ Generate app key
+```bash
+docker compose exec laravel php artisan key:generate
+```
+#### 6️⃣ Run migrations
+```bash
+docker compose exec laravel php artisan migrate
+```
+#### 7️⃣ Access the application
+| Service     | URL                                            |
+| ----------- | ---------------------------------------------- |
+| Application | [http://localhost:8000](http://localhost:8000) |
+| phpMyAdmin  | [http://localhost:8080](http://localhost:8080) |
+| Vite Dev    | [http://localhost:5173](http://localhost:5173) |
 
 ---
 
-## 8. Versioning Strategy
+## 🧪 Seeder Strategy
 
-The repository follows a milestone-based versioning model.
+To simplify setup:
 
-The current baseline release establishes:
+* Only **SpatieSeeder** and **StakeholderSeeder** are used
+* Complex academic seeders have been removed from the default flow
 
-* multi-guard authentication structure
+👉 This keeps setup fast and clean.
 
-* Redis-backed state management
-
-* Dockerised environment reproducibility
-
-* architectural documentation alignment
-
-Functional modules are introduced only after formalised requirement validation.
-
-***
-
-## 9. System Integrity Guarantees
-
-The architecture ensures:
-
-* single-session enforcement consistency
-
-* container restart safety (no session loss)
-
-* externalised persistent state
-
-* infrastructure-layer separation of responsibilities
-
-This design supports safe scaling without architectural modification.
-
-***
-
-## 10. Academic & Ethical Statement
-
-This system is built using **Laravel**, an open-source framework licensed under the MIT License.
-
-Laravel is used as enabling infrastructure.
-All architectural decisions, design patterns, configuration logic, and implementation strategies are authored and reviewed by the project owner.
-
-Tooling assistance supports — but does not replace — human-directed engineering judgement.
-
-***
-
-## 11. License Status
-
-This repository is currently maintained as a **research artefact**.
-
-Public licensing terms will be defined at the time of formal publication.
-
+Optional: You may import your own dataset or extend seeders as needed.
 
 ---
 
-## Operational Verification
+## ⚡ Caching Strategy
 
-For detailed Redis verification procedures (Cache / Queue / Session),
-including CLI-based proof steps, see:
+* Redis-based caching
+* Tagged cache per model
 
-- [Docker Services – Redis Verification](./docs/docker-services.md#redis-verification)
+Example:
 
-This section documents how to:
-- verify Redis cache storage (DB 1),
-- verify Redis queue processing (DB 2),
-- verify Redis session storage (DB 0),
-- confirm prefix behaviour and configuration alignment.
+```php
+Cache::tags(['level'])->remember('levels_all', now()->addHour(), function () {
+    return Level::orderBy('fheq_level')->get();
+});
+```
+
+---
+
+## 📚 Learning Value
+
+This project demonstrates:
+
+* Multi-guard authentication architecture
+* Role-based access control (RBAC)
+* Modular system design (academic domain)
+* Docker-based development workflow
+* Clean UI architecture with reusable components
+* Real-world problem solving under constraints
+
+---
+
+## ⚠️ Important Notes
+
+* This is a **Phase 1 implementation**
+* Student and employer modules are **not fully implemented yet**
+* All data used is **synthetic (generated using Faker)**
+
+---
+
+## 👨‍💻 Author
+
+**Rukman Bernard**
+
+* LinkedIn: [https://www.linkedin.com/in/rukman-bernard]()
+* ORCID: [https://orcid.org/0009-0001-2737-8367]()
+* Research GitHub: [https://github.com/rukman-bernard]()
+
+---
+
+## ⭐ Final Note
+
+This project is part of a **continuous learning journey** and will be extended in future versions to support full multi-stakeholder functionality.
 
