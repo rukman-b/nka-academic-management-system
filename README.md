@@ -93,6 +93,36 @@ Originally designed for:
 ### 📚 Module Management
 ![Modules](docs/images/modules.png)
 
+
+---
+## 🧭 How to Explore This Project
+
+### 🎓 For Students
+- Read the report  
+- Follow SETUP.md  
+- Import dataset  
+- Study RBAC and architecture  
+
+### 💼 For Recruiters
+- Review ARCHITECTURE.md  
+- Explore Livewire components  
+- Check RBAC implementation  
+
+---
+## 📊 Sample Dataset
+
+Sample data is provided to help explore the system.
+
+👉 [Dataset Import Guide](docs/dataset-guide.md)
+
+---
+
+## 📘 Project Report
+
+Full academic report:
+
+👉 [View Report](docs/report/NKA_Project_Report.pdf)
+
 ---
 ## 🚧 Current System Status
 
@@ -142,7 +172,7 @@ To run this project locally using Docker, follow the setup guide:
 
 👉 [SETUP.md](SETUP.md)
 
-This includes:
+This guide covers:
 
 - Docker environment setup
 - Database migration and seeding
@@ -199,9 +229,9 @@ This project demonstrates:
 
 **Rukman Bernard**
 
-* LinkedIn: [https://www.linkedin.com/in/rukman-bernard]()
-* ORCID: [https://orcid.org/0009-0001-2737-8367]()
-* Research GitHub: [https://github.com/rukman-bernard]()
+* LinkedIn: [https://www.linkedin.com/in/rukman-bernard](https://www.linkedin.com/in/rukman-bernard)
+* ORCID: [https://orcid.org/0009-0001-2737-8367](https://orcid.org/0009-0001-2737-8367)
+* Research GitHub: [https://github.com/rukman-b](https://github.com/rukman-b)
 
 ---
 ## ⭐ Final Note
