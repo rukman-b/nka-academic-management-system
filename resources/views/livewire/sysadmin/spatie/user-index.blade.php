@@ -86,10 +86,9 @@
                                     @endcan
 
                                     @can(Permissions::DELETE_USERS)
-                                        {{-- <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button> --}}
                                         <button 
                                             x-data
-                                            x-on:click="if (confirm('Are you sure?')) { $wire.deleteRole(6) }"
+                                            x-on:click="if (confirm('Are you sure?')) { $wire.delete({{ $user->id }}) }"
                                             class="btn btn-sm btn-danger"
                                         >
                                             Delete
