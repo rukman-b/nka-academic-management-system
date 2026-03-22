@@ -13,7 +13,7 @@ The architecture combines:
 - Role-Based Access Control (RBAC)
 - Docker-based infrastructure
 
-This hybrid approach enables the system to deliver **modern interactive behaviour** while maintaining **server-side simplicity and maintainability**.
+This hybrid approach enables modern interactive behaviour while preserving server-side simplicity, maintainability, and performance.
 
 ---
 ## 🧭 Architectural Overview
@@ -49,9 +49,8 @@ flowchart LR
     subgraph NKA["NKA Web Application System"]
         subgraph Laravel["Laravel Framework"]
             Route[Route Mapping]
-            Component[Livewire Component\<br/> Controller + Presenter]
-            Presenter[Presenter]
-            View[View]
+            Component[Livewire Component<br/> Controller + View Logic]
+            View[Blade View]
             Model[Model]
         end
 
@@ -68,20 +67,17 @@ flowchart LR
     Model --> DB
     DB --> Model
 
-    Component --> Presenter
-    Presenter --> View
+    Component --> View
     View -->|HTTP Response| Browser
 
     Browser -->|AJAX Request| View
-    View --> Presenter
-    Presenter --> Component
+    View --> Component
 
     Component --> Redis
     Redis --> Component
 
     Component --> Model
-    Model --> Presenter
-    Presenter --> View
+    Model --> View
     View -->|AJAX Response| Browser
 ```
 
@@ -289,3 +285,34 @@ The system is built around:
 ## 📌 Final Note
 
 This architecture demonstrates the transition from traditional web application design to a system capable of supporting AI-driven enhancements, making it suitable for modern, data-oriented applications.
+
+---
+## 🔬 Research Ecosystem
+
+The NKA Academic Management System is part of a structured progression from academic research to engineering implementation.
+
+The diagram below illustrates how foundational knowledge evolves into system design, implementation, and reusable infrastructure.
+
+```mermaid
+flowchart LR
+
+    UKHE["UK HE Framework Paper<br/>(Foundation Knowledge)"]
+
+    SIS["SIS Design Paper<br/>(System Design)"]
+
+    NKA["NKA Academic Management System<br/>(BCS PGD Project - Distinction)"]
+
+    RBAC_PAPER["RBAC Research Paper<br/>(Focused Technical Study)"]
+
+    RBAC_ARTEFACT["RBAC Infrastructure Artefact<br/>(Reusable Engineering Output)"]
+
+    %% Primary Flow
+    UKHE -->|Foundation for| SIS
+    SIS -->|Designs| NKA
+    NKA -->|Leads to| RBAC_PAPER
+    RBAC_PAPER -->|Implements| RBAC_ARTEFACT
+
+    %% Supporting Relationships
+    SIS -.->|Supports| RBAC_PAPER
+    NKA -.->|Produces| RBAC_ARTEFACT
+```
