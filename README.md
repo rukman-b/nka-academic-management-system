@@ -69,6 +69,48 @@ flowchart TB
     Docker --> Redis
 ```
 ---
+---
+---
+## 🧠 Research & System Evolution
+
+This project is part of a broader academic and engineering journey, evolving from foundational academic research into a real-world system and reusable infrastructure.
+
+<p align="center">
+  <img src="docs/images/research-ecosystem.png" width="800" alt="Research Ecosystem Diagram">
+</p>
+
+### 🔗 Related Research & Artefacts
+
+- 📘 **UK HE Framework Paper**  
+  https://doi.org/10.5281/zenodo.17738909  
+
+- 📗 **SIS Design Paper (Design-Science Prototype)**  
+  https://doi.org/10.5281/zenodo.17075060  
+
+- 🖥️ **NKA Academic Management System (This Project)**  
+  https://doi.org/10.5281/zenodo.19158156  
+
+- 📙 **RBAC Research Paper**  
+  https://doi.org/10.5281/zenodo.17127207  
+
+- ⚙️ **RBAC Infrastructure Artefact**  
+  https://doi.org/10.5281/zenodo.18910977  
+
+### 🔍 Key Idea
+
+This ecosystem demonstrates a structured progression:
+
+**Academic Study → System Design → Real Implementation → Research → Reusable Infrastructure**
+
+---
+## 📖 Citation
+
+If you use this project in academic or professional work, please cite:
+
+**NKA Academic Management System (Phase 1)**  
+https://doi.org/10.5281/zenodo.19158156
+
+---
 ## 🎯 Project Scope
 
 This repository represents **Phase 1 of the system**, focusing on the **staff-side implementation**.
