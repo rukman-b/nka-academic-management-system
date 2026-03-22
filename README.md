@@ -69,8 +69,6 @@ flowchart TB
     Docker --> Redis
 ```
 ---
----
----
 ## 🧠 Research & System Evolution
 
 This project is part of a broader academic and engineering journey, evolving from foundational academic research into a real-world system and reusable infrastructure.
