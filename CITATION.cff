@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "NKA Academic Management System (Phase 1)"
+message: "If you use this project, please cite it as below."
+type: software
+
+authors:
+  - family-names: "Bernard"
+    given-names: "Rukman"
+    orcid: "https://orcid.org/0009-0001-2737-8367"
+
+repository-code: "https://github.com/rukman-b/nka-academic-management-system"
+url: "https://doi.org/10.5281/zenodo.19158157"
+doi: "10.5281/zenodo.19158157"
+version: "v1.0-bcs-phase1"
+date-released: 2026-03-22
+
+abstract: >
+  A Laravel-based academic management system developed as part of a BCS Professional Graduate Diploma (PGD) project (Distinction).
+  The system demonstrates a modular academic platform aligned with UK RQF standards, featuring multi-guard authentication,
+  role-based access control, and Docker-based deployment.
+
+keywords:
+  - Laravel
+  - RBAC
+  - Academic Management System
+  - Livewire
+  - Docker
+  - Redis
+  - Education Technology
+
+license: "Other"
