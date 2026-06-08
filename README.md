@@ -339,7 +339,7 @@ This project demonstrates:
 
 * LinkedIn: [https://www.linkedin.com/in/rukman-bernard](https://www.linkedin.com/in/rukman-bernard)
 * ORCID: [https://orcid.org/0009-0001-2737-8367](https://orcid.org/0009-0001-2737-8367)
-* Research GitHub: [https://github.com/rukman-b](https://github.com/rukman-b)
+* GitHub: [https://github.com/rukman-b](https://github.com/rukman-b)
 
 ---
 ## ⭐ Final Note
