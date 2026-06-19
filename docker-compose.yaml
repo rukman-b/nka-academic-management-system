@@ -3,12 +3,12 @@ services:
     image: mariadb:10.11
     restart: unless-stopped
     ports:
-      - "3306:3306"
+      - "${DB_FORWARD_PORT:-3306}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-rootsecret}
+      MYSQL_DATABASE: ${DB_DATABASE:-nka_hub}
+      MYSQL_USER: ${DB_USERNAME:-nka_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf:ro
@@ -23,7 +23,7 @@ services:
     image: redis:alpine
     restart: unless-stopped
     ports:
-      - "6380:6379"
+      - "${REDIS_FORWARD_PORT:-6380}:6379"
     volumes:
       - redis_data:/data
     healthcheck:
@@ -34,12 +34,13 @@ services:
     networks: [nka]
 
   laravel:
-    user: www-data:www-data
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     working_dir: /var/www/html
+    environment:
+      COMPOSER_CACHE_DIR: /tmp/composer-cache
     volumes:
       - .:/var/www/html
     expose:
@@ -55,7 +56,7 @@ services:
     image: nginx:alpine
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - "${APP_FORWARD_PORT:-8000}:80"
     volumes:
       - .:/var/www/html
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
@@ -75,7 +76,7 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"
     ports:
-      - "5173:5173"
+      - "${VITE_FORWARD_PORT:-5173}:5173"
     depends_on:
       - laravel
     networks: [nka]
@@ -84,11 +85,11 @@ services:
     image: phpmyadmin
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - "${PHPMYADMIN_FORWARD_PORT:-8080}:80"
     environment:
       PMA_HOST: db
-      PMA_USER: ${DB_USERNAME}
-      PMA_PASSWORD: ${DB_PASSWORD}
+      PMA_USER: ${DB_USERNAME:-nka_user}
+      PMA_PASSWORD: ${DB_PASSWORD:-secret}
     depends_on:
       db:
         condition: service_healthy

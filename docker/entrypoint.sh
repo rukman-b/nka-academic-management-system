@@ -3,30 +3,35 @@ set -e
 
 cd /var/www/html
 
-echo "[entrypoint] Preparing Laravel runtime..."
+echo "[entrypoint] Preparing Laravel runtime directories..."
 
-# If dependencies are not installed yet, do NOT run artisan.
+mkdir -p storage/app/public \
+  storage/framework/cache/data \
+  storage/framework/sessions \
+  storage/framework/testing \
+  storage/framework/views \
+  storage/logs \
+  bootstrap/cache
+
+chmod -R 775 storage bootstrap/cache || true
+
 if [ ! -f "vendor/autoload.php" ]; then
-  echo "[entrypoint] vendor/autoload.php missing."
-  echo "[entrypoint] Run: docker compose run --rm --entrypoint composer laravel install"
+  echo "[entrypoint] vendor/autoload.php is missing."
+  echo "[entrypoint] Run setup with:"
+  echo "[entrypoint] docker compose exec --user root laravel sh docker/setup.sh"
   exec php-fpm
 fi
 
-echo "Fixing permissions..."
+echo "[entrypoint] Fixing Laravel writable directory permissions..."
+
 chown -R www-data:www-data storage bootstrap/cache || true
 chmod -R 775 storage bootstrap/cache || true
 
-# only generate key if not set
-if ! grep -q "APP_KEY=base64:" .env 2>/dev/null; then
-  echo "Generating Laravel APP_KEY..."
-  php artisan key:generate --force
+if [ -f "artisan" ] && [ ! -L "public/storage" ]; then
+  echo "[entrypoint] Creating storage link if missing..."
+  php artisan storage:link || true
 fi
 
-# create storage link if missing
-if [ ! -L "public/storage" ]; then
-  echo "Creating storage link..."
-  php artisan storage:link
-fi
+echo "[entrypoint] Starting cron and PHP-FPM..."
 
-echo "Starting cron + PHP-FPM..."
 cron -f & exec php-fpm
