@@ -13,7 +13,14 @@ mkdir -p storage/app/public \
   storage/logs \
   bootstrap/cache
 
-chmod -R 775 storage bootstrap/cache
+echo "[setup] Setting Laravel runtime directory permissions..."
+
+find storage bootstrap/cache -type d -exec chmod 775 {} \;
+find storage bootstrap/cache -type f -exec chmod 664 {} \;
+
+echo "[setup] Marking mounted Git repository as safe for container setup..."
+
+git config --global --add safe.directory /var/www/html || true
 
 echo "[setup] Installing Composer dependencies..."
 
@@ -38,6 +45,9 @@ php artisan storage:link || true
 echo "[setup] Fixing Laravel writable directory ownership..."
 
 chown -R www-data:www-data storage bootstrap/cache vendor
+
+echo "[setup] Re-applying safe runtime permissions..."
+
 find storage bootstrap/cache -type d -exec chmod 775 {} \;
 find storage bootstrap/cache -type f -exec chmod 664 {} \;
 
