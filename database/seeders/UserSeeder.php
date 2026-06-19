@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             $role = $userData['role'];
             unset($userData['role']);
 
-            $user = User::factory()->create($userData);
+            $user = User::factory()->unverified()->create($userData);
             if ($role) {
                 $user->assignRole($role);
             }
