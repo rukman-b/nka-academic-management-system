@@ -1,6 +1,6 @@
 <div class="card card-primary">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="card-title mb-0">Cron Scheduler Execution Duration</h3>
+        <h3 class="card-title mb-0">Scheduler Execution Duration</h3>
         <span class="badge badge-secondary">
             Last Cron Run: {{ $lastRunTime }}
         </span>
@@ -57,7 +57,7 @@
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Duration (s)'
+                            text: 'Duration (seconds)'
                         }
                     }
                 }

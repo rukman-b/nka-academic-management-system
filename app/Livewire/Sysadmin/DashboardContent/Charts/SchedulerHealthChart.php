@@ -21,7 +21,11 @@ class SchedulerHealthChart extends Component
 
         $this->chartData = [
             'labels' => $logs->map(fn($log) => $log->started_at->format('d M H:i'))->values()->all(),
-            'durations' => $logs->map(fn($log) => $log->started_at->diffInSeconds($log->finished_at))->values()->all(),
+            'durations' => $logs->map(function ($log) {
+                $duration = $log->started_at->diffInSeconds($log->finished_at);
+
+                return $duration > 0 ? $duration : 0.1;
+            })->values()->all(),
             'statuses' => $logs->map(fn($log) => $log->status)->values()->all(),
         ];
 
@@ -30,7 +34,6 @@ class SchedulerHealthChart extends Component
             ? $latestLog->finished_at->format('Y-m-d h:i A')
             : 'N/A';
     }
-
     public function render()
     {
         return view('livewire.sysadmin.dashboard-content.charts.scheduler-health-chart');
