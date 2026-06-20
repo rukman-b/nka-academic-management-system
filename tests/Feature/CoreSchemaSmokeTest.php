@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
+
+uses(RefreshDatabase::class);
 
 it('has core academic tables', function () {
     expect(Schema::hasTable('departments'))->toBeTrue();
