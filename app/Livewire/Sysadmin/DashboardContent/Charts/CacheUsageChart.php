@@ -17,43 +17,46 @@ class CacheUsageChart extends Component
     }
 
     protected function collectTaggedUsage(): array
-{
-    $usage = [];
+    {
+        $usage = [];
 
-    $redis = Redis::connection('cache');
-    $tagKeys = $redis->keys('tag:*:entries');
+        $redis = Redis::connection('cache');
 
-    foreach ($tagKeys as $key) {
-        if (preg_match('/^tag:([^:]+):entries$/', $key, $matches)) {
-            $tag = $matches[1];
+        // Laravel cache keys may include the CACHE_PREFIX value.
+        // Example: nka_hub_cache_tag:programme:entries
+        $tagKeys = $redis->keys('*tag:*:entries');
 
-            try {
-                $typeCode = $redis->type($key); // integer
-                $type = match ($typeCode) {
-                    1 => 'string',
-                    2 => 'set',
-                    3 => 'list',
-                    4 => 'zset',
-                    5 => 'hash',
-                    default => 'unknown',
-                };
+        foreach ($tagKeys as $key) {
+            if (preg_match('/tag:([^:]+):entries$/', $key, $matches)) {
+                $tag = $matches[1];
 
-                $count = match ($type) {
-                    'zset' => $redis->zcard($key),
-                    'set'  => $redis->scard($key),
-                    default => 0,
-                };
+                try {
+                    $typeCode = $redis->type($key);
 
-                $usage[$tag] = $count;
-            } catch (\Throwable $e) {
-                $usage[$tag] = 0;
+                    $type = match ($typeCode) {
+                        1, 'string' => 'string',
+                        2, 'set'    => 'set',
+                        3, 'list'   => 'list',
+                        4, 'zset'   => 'zset',
+                        5, 'hash'   => 'hash',
+                        default     => 'unknown',
+                    };
+
+                    $count = match ($type) {
+                        'zset' => $redis->zcard($key),
+                        'set'  => $redis->scard($key),
+                        default => 0,
+                    };
+
+                    $usage[$tag] = $count;
+                } catch (\Throwable $e) {
+                    $usage[$tag] = 0;
+                }
             }
         }
+
+        return $usage;
     }
-
-    return $usage;
-}
-
     public function render()
     {
         logger('Cache usage data:', $this->usage);
