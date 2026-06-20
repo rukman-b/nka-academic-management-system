@@ -521,6 +521,30 @@ The setup script recreates required folders and applies the expected runtime per
 
 ---
 
+### Clear Laravel Log File
+
+Laravel writes application logs to the following file:
+
+```text
+storage/logs/laravel.log
+```
+
+In the Docker development environment, this file may be owned by the container user, usually `www-data`. Because of this, the file may not be directly editable from the host machine.
+
+To clear the Laravel log file safely, run:
+
+```bash
+docker compose exec laravel truncate -s 0 storage/logs/laravel.log
+```
+
+Alternatively, the log file can be cleared from the host machine using:
+
+```bash
+sudo truncate -s 0 storage/logs/laravel.log
+```
+
+---
+
 ## Resetting the Local Environment
 
 To fully reset the Docker environment, including database data:
