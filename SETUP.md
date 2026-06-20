@@ -286,6 +286,54 @@ This keeps tests fast and separate from the normal Redis-backed local applicatio
 
 ---
 
+## Laravel Scheduler and Cron
+
+The project includes a Laravel scheduled command for cleaning old login attempt records.
+
+To view the registered scheduled tasks:
+
+```bash
+docker compose exec laravel php artisan schedule:list
+```
+
+Example schedule:
+
+```text
+0 3 1 * *  php artisan cleanup:login-attempts
+```
+
+This means the command is scheduled to run monthly on the first day of the month at 03:00.
+
+To run due scheduled tasks through Laravel's scheduler:
+
+```bash
+docker compose exec laravel php artisan schedule:run
+```
+
+The cleanup command can also be run manually:
+
+```bash
+docker compose exec laravel php artisan cleanup:login-attempts
+```
+
+This command affects the `login_attempts` table. It deletes only old login attempt records, usually records older than 90 days. It does not clear all login attempt records.
+
+Scheduler execution history is stored separately in the `scheduler_logs` table. The Sysadmin dashboard uses this table to display the **Cron Scheduler Execution Duration** chart.
+
+To check recent scheduler logs:
+
+```bash
+docker compose exec laravel php artisan tinker
+```
+
+```php
+\App\Models\SchedulerLog::latest()->take(5)->get();
+```
+
+If the scheduler chart is empty, it usually means no due scheduled task has run yet, or no scheduler log records exist.
+
+---
+
 ## Active Tests and Legacy Tests
 
 The active test suite currently contains a small baseline set of tests. These tests verify that the application can boot, the testing environment is active, and the core setup is working.
