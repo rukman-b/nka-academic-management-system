@@ -23,9 +23,12 @@
 
         @if($count > 0)
             <div class="dropdown-divider"></div>
-            <a href="{{ route('notifications.markAllRead') }}" class="dropdown-item dropdown-footer text-center">
-                Mark all as read
-            </a>
+            <form method="POST" action="{{ route('notifications.markAllRead') }}">
+                @csrf
+                <button type="submit" class="dropdown-item dropdown-footer text-center">
+                    Mark all as read
+                </button>
+            </form>
         @endif
     </div>
 </li>
