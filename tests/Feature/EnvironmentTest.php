@@ -1,5 +1,5 @@
 <?php
 
-test('debug current env', function () {
-    expect(app()->environment('testing'))->toBeTrue();
+it('runs in the testing environment', function () {
+    expect(app()->environment())->toBe('testing');
 });
