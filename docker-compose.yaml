@@ -5,7 +5,7 @@ services:
     ports:
       - "${DB_FORWARD_PORT:-3306}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-rootsecret}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-secret}
       MYSQL_DATABASE: ${DB_DATABASE:-nka_hub}
       MYSQL_USER: ${DB_USERNAME:-nka_user}
       MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
