@@ -6,10 +6,11 @@
 @extends('components.layouts.adminlte-app')
 
 @section('adminlte_css')
-    @if(!empty($adminlteSkinEntry))
-        @vite($adminlteSkinEntry)
+    @if(!empty($skinEntry))
+        @vite($skinEntry)
     @endif
 @endsection
+
 
 @section('subtitle', 'Welcome')
 @section('content_header_title', 'Home')

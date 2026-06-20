@@ -54,6 +54,9 @@
     {{-- Extra Configured Plugins Stylesheets --}}
     @include('adminlte::plugins', ['type' => 'css'])
 
+    {{-- Pushed page/component styles --}}
+    @stack('css')
+
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
         @if(intval(app()->version()) >= 7)
@@ -133,6 +136,7 @@
 
     {{-- Pushed scripts from components (required for @push('scripts')) --}}
     @stack('scripts')
+    @stack('js')
 
 </body>
 

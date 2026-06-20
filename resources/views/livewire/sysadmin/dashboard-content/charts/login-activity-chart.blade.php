@@ -3,14 +3,28 @@
         <h3 class="card-title">Login Success vs Failures (Last 30 Days)</h3>
     </div>
     <div class="card-body">
-        <canvas id="loginActivityChart" height="300"></canvas>
+        <div class="chart-container chart-container-wide">
+            <canvas id="loginActivityChart"></canvas>
+        </div>
     </div>
 </div>
 
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const ctx = document.getElementById('loginActivityChart').getContext('2d');
+        const canvas = document.getElementById('loginActivityChart');
+
+        if (!canvas) {
+            return;
+        }
+
+        const existingChart = Chart.getChart(canvas);
+
+        if (existingChart) {
+            existingChart.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
 
         new Chart(ctx, {
             type: 'bar',
@@ -20,13 +34,13 @@
                     {
                         label: 'Success',
                         data: @json($successData),
-                        backgroundColor: 'rgba(40, 167, 69, 0.8)', // green
+                        backgroundColor: 'rgba(40, 167, 69, 0.8)',
                         stack: 'login'
                     },
                     {
                         label: 'Failure',
                         data: @json($failureData),
-                        backgroundColor: 'rgba(220, 53, 69, 0.8)', // red
+                        backgroundColor: 'rgba(220, 53, 69, 0.8)',
                         stack: 'login'
                     }
                 ]
@@ -34,6 +48,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                resizeDelay: 150,
                 plugins: {
                     legend: { position: 'top' },
                     tooltip: {

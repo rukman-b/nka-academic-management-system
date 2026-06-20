@@ -11,6 +11,7 @@ class LoginAttemptCleanupScheduler extends BaseScheduler
 {
     public static function register(Schedule $schedule): void
     {
-        static::logCommand($schedule, 'cleanup:login-attempts', 'monthlyOn', 1, '03:00');
+        // static::logCommand($schedule, 'cleanup:login-attempts', 'monthlyOn', 1, '03:00');
+        static::logCommand($schedule, 'cleanup:login-attempts', 'everyMinute');
     }
 }

@@ -6,22 +6,46 @@
         </span>
     </div>
     <div class="card-body">
-        @if (count($chartData['labels']) > 0)
-            <canvas id="schedulerChart" style="width: 100%; height: 300px;"></canvas>
-        @else
-            <p class="text-center text-muted mb-0">No data to display yet.</p>
-        @endif
+        <div class="chart-container">
+            @if (count($chartData['labels']) > 0)
+                <canvas id="schedulerChart"></canvas>
+            @else
+                <div class="chart-empty-state">
+                    <p class="text-center text-muted mb-0">
+                        No scheduler execution records found yet.
+                    </p>
+                </div>
+            @endif
+        </div>
     </div>
 </div>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-    const schedulerChartData = @json($chartData);
+    document.addEventListener('DOMContentLoaded', function () {
+        const schedulerChartData = @json($chartData);
 
-    if (schedulerChartData && Array.isArray(schedulerChartData.labels) && schedulerChartData.labels.length > 0) {
-        const ctx = document.getElementById('schedulerChart').getContext('2d');
+        if (
+            !schedulerChartData ||
+            !Array.isArray(schedulerChartData.labels) ||
+            schedulerChartData.labels.length === 0
+        ) {
+            return;
+        }
+
+        const canvas = document.getElementById('schedulerChart');
+
+        if (!canvas || typeof Chart === 'undefined') {
+            return;
+        }
+
+        const existingChart = Chart.getChart(canvas);
+
+        if (existingChart) {
+            existingChart.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
 
         new Chart(ctx, {
             type: 'bar',
@@ -38,6 +62,8 @@
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
+                resizeDelay: 150,
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -63,6 +89,6 @@
                 }
             }
         });
-    }
+    });
 </script>
 @endpush

@@ -11,14 +11,28 @@
         </button>
     </div>
     <div class="card-body">
-        <canvas id="usersByRoleChart" height="250"></canvas>
+        <div class="chart-container">
+            <canvas id="usersByRoleChart"></canvas>
+        </div>
     </div>
 </div>
 
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const ctx = document.getElementById('usersByRoleChart').getContext('2d');
+        const canvas = document.getElementById('usersByRoleChart');
+
+        if (!canvas) {
+            return;
+        }
+
+        const existingChart = Chart.getChart(canvas);
+
+        if (existingChart) {
+            existingChart.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
 
         new Chart(ctx, {
             type: 'bar',
